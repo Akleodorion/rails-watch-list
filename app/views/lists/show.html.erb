@@ -2,21 +2,13 @@
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li>
-    <%= bookmark.comment %>
-    <%= link_to 'delete bookmark', list_bookmark_path(@list,bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <%= bookmark.comment %>
+      <%= link_to 'delete bookmark', list_bookmark_path(@list,bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
     </li>
   <% end %>
 </ul>
 
-<hr>
-<br><br><br><br><br><br><br><br><br><br>
 <ul>
-  <% @movies.each do |movie| %>
-    <li> <%= movie.title %></li>
-    <%= simple_form_for([@list, @bookmark]) do |f| %>
-      <%= f.input :comment%>
-      <%= f.hidden_field :movie_id, :value => movie.id%>
-      <%= f.submit %>
-    <% end %>
-  <% end %>
+<li><%= link_to 'Add a movie to your list', new_list_bookmark_path(@list.id) %></li>
+<li><%= link_to 'get back to the main page', lists_path%></li>
 </ul>
